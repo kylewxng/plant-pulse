@@ -17,20 +17,21 @@
     <div class="navbar">
         <h2 class="logo">plantpulse.</h2>
         <div class="buttons">
-            <button class="button">Home</button>
-            <button class="button">Gallery</button>
+            <a href="home.html"><button class="button">Home</button></a>
+            <a href="gallery.html"><button class="button">Gallery</button></a>
             <button class="button">Analytics</button>
         </div>
+        <button id="log-out">Log out</button>
     </div>
     <h2 id="title">Upload image of crop</h2>
     <div class="middle-container">
-        <button class="upload">Upload Image</button>
-        <h3>or drop a file,</h3>
+        <label for="fileInput" class="upload-btn" class="Upload">Upload File</label>
+<input type="file" id="fileInput" hidden>
+
         <h4>paste image or <u>URL</u></h4>
     </div>
     <div id="bottom">
         <button id="add">Add to gallery</button>
     </div>
-
 </body>
 </html>
