@@ -22,6 +22,8 @@ body {
 .logo {
     color: white;
     font-size: 22px;
+    left: 5%;
+    font-family: 'Montserrat';
 }
 
 .buttons {
@@ -148,19 +150,56 @@ h3, h4 {
     cursor: pointer;
     margin-right: 5%;
 }
-.upload-btn {
-    padding: 10px 20px;
-    background-color: #2D5957;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    display: inline-block;
+/* Reset styles only within the accordion */
+.accordion *,
+.accordion *::before,
+.accordion *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.upload-btn:hover {
-    background-color: #346764;
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 3em 1em;
+}
+
+/* Ensure the navigation bar is unaffected */
+nav {
+    all: unset;
+}
+
+.accordion {
+    max-width: 420px;
+    text-align: left;
+}
+
+article {
+    border: 1px solid #fff;
+    padding: 1em;
+    margin: 1em auto;
+}
+
+article:hover {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    appearance: none;
+    position: fixed;
+    top: -100vh;
+    left: -100vh;
+}
+
+input[type="radio"] ~ div {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+input[type="radio"]:checked ~ div {
+    max-height: 200px;
 }
