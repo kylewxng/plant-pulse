@@ -6,7 +6,7 @@ body {
 .black-box {
   border: solid black;
   border-radius: 16px;
-  width: 90%;
+  width: 93%;
   margin-right: auto;
   margin-left: auto;
   height: 120vh;
@@ -14,7 +14,7 @@ body {
   background: radial-gradient(circle at center 40%, #215941 0%, #000000 35%);
 }
 
-.login-container {
+.signup-container {
   display: flex;
   flex-direction: column; /* Stack items vertically */
   align-items: left; /* Center items horizontally */
@@ -25,23 +25,8 @@ body {
   border: 2px solid white;
   border-radius: 10px;
   position: absolute;
-  top: 25%;
-  left: 15%;
+  top: 35%;
+  left: 10%;
   color: white; /* Ensure text is visible */
 }
 
-.input-box {
-  height: 36px;
-  border-radius: 10px;
-  border: none;
-}
-
-.sign-in-button {
-  margin-top: 30px;
-  background-color: #58B484;
-  color: white;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}
