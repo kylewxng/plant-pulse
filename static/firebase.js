@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // const logoutButton = document.getElementById("logoutButton");
-    // if(logoutButton){
-    //     logoutButton.addEventListener("click", (event) => {
-    //         event.preventDefault();
-    //         logout();
-    //     });
-    // }
+    const logoutButton = document.getElementById("logoutButton");
+    if(logoutButton){
+        logoutButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            logout();
+        });
+    }
 });
 
 const loginEmailPassword = async () => {
