@@ -49,7 +49,7 @@ p {
 
 .input-box {
   height: 62px;
-  width: 407px;
+  width: 395px;
   border-radius: 10px;
   border: none;
   font-size: 24px;
@@ -116,4 +116,47 @@ h3 {
 .create-account-link:visited {
   color: white;
   text-decoration: underline;
+}
+
+/* Media Query for small laptops, tablets, and mobile screens */
+@media screen and (max-width: 768px) {
+  .login-container {
+    width: 90%; /* Adjust width to be more responsive */
+    left: 5%;
+    top: 20%; /* Make the login box a bit higher */
+  }
+
+  .input-box {
+    width: 100%; /* Make input fields take up full width */
+  }
+
+  .sign-in-button {
+    width: 100%; /* Make the sign-in button full-width */
+  }
+
+  .google-sign-in-button {
+    width: 50px; /* Slightly smaller google button */
+    height: 50px;
+  }
+
+  .title-text {
+    font-size: 32px; /* Slightly smaller title */
+    left: 10%;
+  }
+
+  h2 {
+    font-size: 32px; /* Slightly smaller heading */
+  }
+
+  h3 {
+    font-size: 24px; /* Smaller subheading */
+  }
+
+  p {
+    font-size: 20px; /* Adjust text size in inputs */
+  }
+
+  .create-account-link {
+    font-size: 18px; /* Smaller font size for link */
+  }
 }
