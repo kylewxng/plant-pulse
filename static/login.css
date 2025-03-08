@@ -1,17 +1,30 @@
 body {
   background-color: #2D5957;
   overflow: hidden;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  color: white;
 }
 
 .black-box {
   border: solid black;
-  border-radius: 16px;
-  width: 90%;
+  border-radius: 46px;
+  width: 96%;
   margin-right: auto;
   margin-left: auto;
   height: 120vh;
-  margin-top: 75px;
-  background: radial-gradient(circle at center 40%, #215941 0%, #000000 35%);
+  margin-top: 70px;
+  background: radial-gradient(circle at center 40%, #215941 0%, #000000 30%);
+}
+
+.title-text {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 10%;
+  left: 4%;
+  color: white;
+  font-weight: 600;
 }
 
 .login-container {
@@ -19,29 +32,88 @@ body {
   flex-direction: column; /* Stack items vertically */
   align-items: left; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
-  width: 300px; /* Adjust as needed */
+  width: 410px; /* Adjust as needed */
   height: auto; /* Let it grow based on content */
   padding: 20px; /* Add space inside */
-  border: 2px solid white;
+  border: 2px white;
   border-radius: 10px;
   position: absolute;
-  top: 25%;
-  left: 15%;
+  top: 22%;
+  left: 12%;
   color: white; /* Ensure text is visible */
 }
 
+p {
+  font-size: 24px;
+}
+
 .input-box {
-  height: 36px;
+  height: 62px;
+  width: 407px;
   border-radius: 10px;
   border: none;
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  padding-left: 12px;
 }
 
 .sign-in-button {
-  margin-top: 30px;
   background-color: #58B484;
   color: white;
   padding: 12px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  width: 407px;
+  height: 62px;
+  font-size: 20px;
+  font-family: "Inter";
+}
+
+.forgot-password-link {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+h2 {
+  font-size: 40px;
+  margin-top: 0;
+  padding: 0;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 28px;                                     
+  font-weight: 300;
+  min-width: 441px;
+  margin-bottom: 20px;
+}
+
+.google-sign-in-button {
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  align-self: center;
+  padding: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.create-account-link {
+  align-self: center;
+  font-size: 20px;
+  text-decoration: underline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.create-account-link:visited {
+  color: white;
+  text-decoration: underline;
 }
