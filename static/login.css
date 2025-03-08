@@ -23,8 +23,8 @@ body {
 
 .green-rectangle {
   position: absolute;
-  top: 2%;
-  left: 62%;
+  top: 11%;
+  left: 63%;
   width: 500px;
   height: 650px;
 }
@@ -50,7 +50,7 @@ body {
   border-radius: 12px;
   position: absolute;
   top: 13%;
-  left: 12%;
+  left: 9%;
   color: white;
 }
 
