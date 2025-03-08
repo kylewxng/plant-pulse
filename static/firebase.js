@@ -35,8 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
             createAccount();
         });
     }
-
-    const logoutButton = document.getElementById("logoutButton");
+    const createAccountLink = document.getElementById("createAccount");
+    if(createAccountLink){
+        createAccountLink.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.replace("/signup");
+        });
+    }
+    const logoutButton = document.getElementById("log-out");
     if(logoutButton){
         logoutButton.addEventListener("click", (event) => {
             event.preventDefault();
@@ -95,6 +101,7 @@ const logout = async () => {
 }
 
 let firstLoad = true; 
+
 const monitorAuthState = () => {
     onAuthStateChanged(auth, (user) => {
         console.log("Auth state changed:", user);
@@ -112,16 +119,16 @@ const monitorAuthState = () => {
 
             // If user is on login page but already logged in, redirect to home
             if (currentPage === "/login") {
-                window.location.replace("/");
+                window.location.replace("/home");
             }
         } else {
             console.log("User is logged out.");
 
             // If user is not logged in and not already on login page, redirect them
-            if (currentPage !== "/login") {
+            if (currentPage !== "/login" && currentPage !== "/signup") {
                 if (!firstLoad) alert("You have logged out!");
                 window.location.replace("/login");
-            }
+            }            
         }
 
         firstLoad = false;
