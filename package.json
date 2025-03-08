@@ -1,0 +1,27 @@
+{
+  "name": "plant_pulse",
+  "version": "1.0.0",
+  "main": "static/firebase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradwco/plant-pulse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradwco/plant-pulse/issues"
+  },
+  "homepage": "https://github.com/bradwco/plant-pulse#readme",
+  "description": "",
+  "dependencies": {
+    "firebase": "^11.4.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
