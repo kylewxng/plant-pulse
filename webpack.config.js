@@ -1,12 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
-    devtool: 'eval-source-map',
-    entry: './static/firebase.js',  
+    entry: './static/firebase.js', // Your main JS file
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'static'),  // ✅ Change from 'dist' to 'static'
         filename: 'bundle.js'
     },
-    watch: true,  
+    mode: 'development',
+    watch: true,
 };

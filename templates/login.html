@@ -26,7 +26,8 @@
       <img id="googleSignIn"src="../static/images/google icon.png" class="google-sign-in-button"/>
       <a id="createAccount" class="create-account-link" href="signup.html">Create an account</a>
     </div>
-    <script src = "../dist/bundle.js"> </script>
+    <script src="{{ url_for('static', filename='bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </main>
 </body>
 </html>
