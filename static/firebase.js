@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
             loginEmailPassword();
         });
     }
-
     const signupButton = document.getElementById("signupSubmit");
     if(signupButton){
         signupButton.addEventListener("click", (event) => {
@@ -47,6 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutButton.addEventListener("click", (event) => {
             event.preventDefault();
             logout();
+        });
+    }
+    const galleryNavBut = document.getElementById("galleryLink");
+    if(galleryNavBut){
+        galleryNavBut.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.replace("/gallery");
+        });
+    }
+    const homeNavBut = document.getElementById("homeLink");
+    if(homeNavBut){
+        homeNavBut.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.replace("/home");
         });
     }
 });
@@ -75,24 +88,19 @@ const loginEmailPassword = async () => {
 
 const createAccount = async () => {
     const signupEmail = document.getElementById("signupEmail").value.trim();
-    const confirmEmail = document.getElementById("confirmEmail").value.trim();
     const signupPassword = document.getElementById("signupPass").value;
-    if(signupEmail==confirmEmail){
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
-            console.log("User Created:", userCredential.user);
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, signupEmail, signupPassword);
+        console.log("User Created:", userCredential.user);
 
-            await sendEmailVerification(userCredential.user);
-            alert("Verification email sent! Please check your inbox before logging in.");
-            await signOut(auth);
-            window.location.replace("/login"); 
-
-            console.log("User Created (Verification Pending):", user);
-        } catch (error) {
-            console.error("Error Creating User:", error.message);
-        }
-    }else{
-        alert("Emails do not match!");
+        await sendEmailVerification(userCredential.user);
+        alert("Verification email sent! Please check your inbox before logging in.");
+        await signOut(auth);
+        window.location.replace("/login"); 
+        alert('Please verify your email');
+        console.log("User Created (Verification Pending):", user);
+    } catch (error) {
+        console.error("Error Creating User:", error.message);
     }
 }
 

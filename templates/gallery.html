@@ -16,8 +16,8 @@
     <div class="navbar">
         <h2 class="logo">plantpulse.</h2>
         <div class="buttons">
-            <a href="home.html"><button class="button">Home</button></a>
-            <a href="gallery.html"><button class="button">Gallery</button></a>
+            <button id="homeLink" class="button">Home</button>
+            <button id ="galleryLink" class="button">Gallery</button>
             <button class="button">Analytics</button>
         </div>
         <button id="log-out">Log out</button>
@@ -86,6 +86,7 @@ Keep an eye out for any signs of pests or diseases, especially fungal infections
       
       </div>
       
-    <script src="script.js"></script>
+      <script src="{{ url_for('static', filename='bundle.js') }}"></script>
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
