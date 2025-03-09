@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../static/home.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../static/home.css" rel="stylesheet" />
     <!--Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="navbar">
-        <h2 class="logo">plantpulse.</h2>
-        <div class="buttons">
-            <button id="homeLink" class="button">Home</button>
-            <button id ="galleryLink" class="button">Gallery</button>
-            <button id="analyticsLink" class="button">Analytics</button>
-        </div>
-        <button id="log-out">Log out</button>
+      <h2 class="logo">plantpulse.</h2>
+      <div class="buttons">
+        <button id="homeLink" class="button">Home</button>
+        <button id="galleryLink" class="button">Gallery</button>
+        <button id="analyticsLink" class="button">Analytics</button>
+      </div>
+      <button id="log-out">Log out</button>
     </div>
     <h2 id="title">Upload your crop</h2>
     <div class="drop-zone">
-        <span class="drop-zone__prompt">Drop file here or click to upload</span>
-        <input id="fileInput" type="file" name="myFile" class="drop-zone__input">
+      <span class="drop-zone__prompt">Drop file here or click to upload</span>
+      <input
+        id="fileInput"
+        type="file"
+        name="myFile"
+        class="drop-zone__input"
+        title="file-input"
+        placeholder="file-input"
+      />
     </div>
-    <label for="plant-name">Enter a plant name:</label>
-    <input id="plantName" type="text" name="plantName" placeholder="e.g., Potato"/>
+    <div class="plant-input-container">
+        <label class="plant-title" for="plant-name" style="color: white">Enter your plant name:</label>
+        <input
+        id="plantName"
+        class="plant-name-input"
+        type="text"
+        name="plantName"
+        placeholder="e.g., Potato"
+        />
+    </div>
     <div id="bottom">
-        <button id="add">Upload File</button>
+      <button id="submitFile">Submit</button>
     </div>
     <script src="{{ url_for('static', filename='bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+  </body>
 </html>
