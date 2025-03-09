@@ -196,6 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (addButton) {
         addButton.addEventListener("click", async (event) => {
             event.preventDefault();
+            //begin loading
+            toggleLoading(true);
             plantName = document.getElementById("plantName").value;
             selectedFile = fileInput.files[0];
             
@@ -219,6 +221,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Pass response data into another function
                 uploadNewPlant(plantName, data.healthScore, data.aiFeedback, selectedFile);
+                //end the loading
+                toggleLoading(false);
             } catch (error) {
                 console.error("❌ Error:", error);
             }
@@ -312,24 +316,24 @@ async function displayUserPlants() {
     });
 }
 
+function toggleLoading(isLoading) {
+    let loadingElement = document.getElementById("loading");
 
-//Displaying the current plants we have
-// async function fetchAndDisplayUserPlants() {
-//     const q = query(collection(db, "plants"), where("uid", "==", user.uid));
-//     const querySnapshot = await getDocs(q);
-
-//     if (querySnapshot.empty) {
-//         console.log("No plants found for this user.");
-//         return;
-//     }
-
-//     // Loop through each document in the collection
-//     querySnapshot.forEach((doc) => {
-//         const plantData = doc.data();
-//         console.log(`Plant Name: ${plantData.name}`);
-//         console.log(`Health: ${plantData.current_health}`);
-//         console.log(`AI Feedback: ${plantData.ai_feedback}`);
-//         console.log(`Image URL: ${plantData.imageUrl}`);
-//         console.log("-----------------------------");
-//     });
-// }
+    if (isLoading) {
+        // Create the loading element if it doesn't exist
+        if (!loadingElement) {
+            loadingElement = document.createElement("div");
+            loadingElement.id = "loading";
+            loadingElement.innerHTML = `
+                <div class="loading-spinner"></div>
+                <p>Loading, please wait...</p>
+            `;
+            document.body.appendChild(loadingElement);
+        }
+        loadingElement.style.display = "flex"; // Show loading animation
+    } else {
+        if (loadingElement) {
+            loadingElement.style.display = "none"; // Hide loading animation
+        }
+    }
+}
