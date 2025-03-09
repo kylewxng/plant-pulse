@@ -12,19 +12,18 @@
 <body>
   <main>
     <div class="black-box"></div>
-    <div class="light-green-box"></div>
     <p class="title-text">plantpulse.</p>
     <div class="login-container">
       <h2>Welcome back</h2>
       <h3>Please enter your account details</h3>
       <p>Email</p>
-      <input id = "loginEmail" type="email" class="input-box" required/>
+      <input id = "loginEmail" type="email" class="input-box" placeholder="sigmaboi@gmail.com" required/>
       <p>Password</p>
-      <input id = "loginPass" type="password" class="input-box" required/>
+      <input id = "loginPass" type="password" class="input-box" placeholder="skibiditoilet123" required/>
       <a class="forgot-password-link">Forgot Password</a>
       <button id = "loginSubmit" type="submit" class="sign-in-button">Sign in</button>
       <img id="googleSignIn"src="../static/images/google icon.png" class="google-sign-in-button"/>
-      <a id="createAccount" class="create-account-link" href="signup.html">Create an account</a>
+      <a id="createAccount" class="create-account-link" style="color: white" href="signup.html">Create an account</a>
     </div>
     <script src="{{ url_for('static', filename='bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
