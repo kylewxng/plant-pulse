@@ -4,6 +4,9 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .navbar {
@@ -196,6 +199,7 @@ article {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-left:20%;
 }
 
 /* Hide radio buttons visually but keep them functional */
@@ -259,4 +263,20 @@ p {
 /* Crop class for title margin */
 .crop {
     margin: 20px 0 0 20px;
+}
+#add-article {
+    padding: 8px 15px;
+    background-color: #2D5957;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    width: 7%;
+    cursor: pointer;
+    margin-top: 3%;
+}
+#articles-container {
+    margin-top: 10vh;
 }

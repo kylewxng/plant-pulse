@@ -26,6 +26,7 @@ def analyze_image(image_bytes):
         - Give a health score from 1 to 10 (10 is healthiest).
         - Explain why you gave this score.
         - Suggest specific actions the farmer should take to improve the plant’s health.
+        - Ensure the total length of response is no more than 100 words.
         """
 
         # Send request to Gemini

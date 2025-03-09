@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
         loginButton.addEventListener("click", (event) => {
             event.preventDefault(); 
             loginEmailPassword();
+            const user = auth.currentUser;
+            if(user && user.emailVerified){
+                window.location.replace("/home");
+            }
         });
     }
     const signupButton = document.getElementById("signupSubmit");
@@ -113,7 +117,7 @@ const loginEmailPassword = async () => {
         }
     } catch (error) {
         console.error("Error logging in:", error.message);
-        alert("Login Error: " + error.message);
+        // alert("Login Error: " + error.message);
     }
 };
 
@@ -156,7 +160,9 @@ const monitorAuthState = () => {
                 window.location.replace("/login");
                 return;
             }
-
+            if (currentPage === "/gallery") {
+                displayUserPlants();
+            }
             // If user is on login page but already logged in, redirect to home
             if (currentPage === "/login") {
                 window.location.replace("/home");
@@ -185,10 +191,12 @@ const storage = getStorage(); //for images
 document.addEventListener("DOMContentLoaded", () => {
     const addButton = document.getElementById("add");
     const fileInput = document.getElementById("fileInput");
+    let plantName = "";
     let selectedFile = null;
     if (addButton) {
         addButton.addEventListener("click", async (event) => {
             event.preventDefault();
+            plantName = document.getElementById("plantName").value;
             selectedFile = fileInput.files[0];
             
             if (!selectedFile) {
@@ -210,8 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const data = await response.json(); // get data from backend
 
                 // Pass response data into another function
-                uploadNewPlant("test", data.healthScore, data.aiFeedback, selectedFile);
-                
+                uploadNewPlant(plantName, data.healthScore, data.aiFeedback, selectedFile);
             } catch (error) {
                 console.error("❌ Error:", error);
             }
@@ -221,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Uploading new plants *Fix upload new plant to take feedback from getAiFeedback
 async function uploadNewPlant(name, health, aiFeedback, imageFile) {
-    const user = auth.currentUser; // ✅ Ensure Firebase Auth is initialized and retrieve user
+    const user = auth.currentUser; 
 
     if (!user) {
         console.error("❌ No authenticated user found.");
@@ -253,6 +260,58 @@ async function uploadNewPlant(name, health, aiFeedback, imageFile) {
     alert(`Plant ${name} uploaded successfully!`);
     return plantId; // Return plantId for further use if needed
 }
+async function displayUserPlants() {
+    const user = auth.currentUser;
+    
+    if (!user) {
+        console.error("❌ No authenticated user found.");
+        alert("You must be logged in to view the gallery.");
+        return;
+    }
+
+    const articlesContainer = document.getElementById("articles-container");
+    if (!articlesContainer) {
+        console.error("❌ Error: articles-container not found!");
+        return;
+    }
+
+    // Clear previous entries before adding new ones
+    articlesContainer.innerHTML = "";
+
+    const q = query(collection(db, "plants"), where("uid", "==", user.uid));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+        console.log("No plants found for this user.");
+        articlesContainer.innerHTML = `<p>No plants found.</p>`;
+        return;
+    }
+
+    querySnapshot.forEach((doc) => {
+        const plantData = doc.data();
+        console.log("Fetched Plant:", plantData);
+
+        // Create the article element
+        const newArticle = document.createElement("article");
+
+        newArticle.innerHTML = `
+            <input class="articleInput" type="radio" name="articles" id="article${plantData.plantId}">
+            <label for="article${plantData.plantId}">
+                <h2 class="crop">${plantData.name}</h2>
+            </label>
+            <div class="accordion-content">
+                <img src="${plantData.imageUrl || 'default-image.jpg'}" 
+                     alt="${plantData.name} Image" class="accordion-image">
+                <p>Health Score: ${plantData.current_health}</p>
+                <p>AI Feedback: ${plantData.ai_feedback}</p>
+            </div>
+        `;
+
+        // Append the new article to the container
+        articlesContainer.appendChild(newArticle);
+    });
+}
+
 
 //Displaying the current plants we have
 // async function fetchAndDisplayUserPlants() {
