@@ -1,3 +1,4 @@
+
 // const dropArea = document.getElementById("drop-area");
 
 //     // dropArea.addEventListener("dragover", (event) => {
@@ -59,3 +60,4 @@
             // Increment article count
             articleCount++;
         });
+

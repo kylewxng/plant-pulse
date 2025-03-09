@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
         loginButton.addEventListener("click", (event) => {
             event.preventDefault(); 
             loginEmailPassword();
+            const user = auth.currentUser;
+            if(user && user.emailVerified){
+                window.location.replace("/home");
+            }
         });
     }
     const signupButton = document.getElementById("signupSubmit");
@@ -113,7 +117,7 @@ const loginEmailPassword = async () => {
         }
     } catch (error) {
         console.error("Error logging in:", error.message);
-        alert("Login Error: " + error.message);
+        // alert("Login Error: " + error.message);
     }
 };
 
@@ -185,10 +189,12 @@ const storage = getStorage(); //for images
 document.addEventListener("DOMContentLoaded", () => {
     const addButton = document.getElementById("add");
     const fileInput = document.getElementById("fileInput");
+    let plantName = "";
     let selectedFile = null;
     if (addButton) {
         addButton.addEventListener("click", async (event) => {
             event.preventDefault();
+            plantName = document.getElementById("plantName").value;
             selectedFile = fileInput.files[0];
             
             if (!selectedFile) {
@@ -210,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const data = await response.json(); // get data from backend
 
                 // Pass response data into another function
-                uploadNewPlant("test", data.healthScore, data.aiFeedback, selectedFile);
+                uploadNewPlant(plantName, data.healthScore, data.aiFeedback, selectedFile);
                 
             } catch (error) {
                 console.error("❌ Error:", error);
@@ -221,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Uploading new plants *Fix upload new plant to take feedback from getAiFeedback
 async function uploadNewPlant(name, health, aiFeedback, imageFile) {
-    const user = auth.currentUser; // ✅ Ensure Firebase Auth is initialized and retrieve user
+    const user = auth.currentUser; 
 
     if (!user) {
         console.error("❌ No authenticated user found.");
