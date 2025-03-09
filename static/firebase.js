@@ -189,10 +189,12 @@ const storage = getStorage(); //for images
 document.addEventListener("DOMContentLoaded", () => {
     const addButton = document.getElementById("add");
     const fileInput = document.getElementById("fileInput");
+    let plantName = "";
     let selectedFile = null;
     if (addButton) {
         addButton.addEventListener("click", async (event) => {
             event.preventDefault();
+            plantName = document.getElementById("plantName").value;
             selectedFile = fileInput.files[0];
             
             if (!selectedFile) {
@@ -214,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const data = await response.json(); // get data from backend
 
                 // Pass response data into another function
-                uploadNewPlant("test", data.healthScore, data.aiFeedback, selectedFile);
+                uploadNewPlant(plantName, data.healthScore, data.aiFeedback, selectedFile);
                 
             } catch (error) {
                 console.error("❌ Error:", error);
