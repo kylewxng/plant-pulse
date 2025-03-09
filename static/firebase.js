@@ -7,6 +7,13 @@ import {
     signOut,
     sendEmailVerification,
 } from 'firebase/auth';
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs
+} from 'firebase/firestore'
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyDJoqbItPGEzTbMA_sovO13dbmSYxV6Z28",
@@ -60,6 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
         homeNavBut.addEventListener("click", (event) => {
             event.preventDefault();
             window.location.replace("/home");
+        });
+    }
+    const loginExisting = document.getElementById("loginLink");
+    if(loginExisting){
+        loginExisting.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.replace("/login");
         });
     }
 });
@@ -145,3 +159,6 @@ const monitorAuthState = () => {
 
 
 monitorAuthState();
+
+//DATA BASE
+const db = getFirestore();
