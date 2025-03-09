@@ -23,5 +23,5 @@ def gallery():
     return render_template("gallery.html")
 
 if __name__ == "__main__":
-    print("🚀 Running Flask server! Open http://127.0.0.1:5000/")
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    print("🚀 Running Flask server! Open http://127.0.0.1:4000/")
+    app.run(debug=True, host="0.0.0.0", port=4000)
