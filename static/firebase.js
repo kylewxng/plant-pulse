@@ -160,7 +160,9 @@ const monitorAuthState = () => {
                 window.location.replace("/login");
                 return;
             }
-
+            if (currentPage === "/gallery") {
+                displayUserPlants();
+            }
             // If user is on login page but already logged in, redirect to home
             if (currentPage === "/login") {
                 window.location.replace("/home");
@@ -217,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Pass response data into another function
                 uploadNewPlant(plantName, data.healthScore, data.aiFeedback, selectedFile);
-                
             } catch (error) {
                 console.error("❌ Error:", error);
             }
@@ -259,6 +260,58 @@ async function uploadNewPlant(name, health, aiFeedback, imageFile) {
     alert(`Plant ${name} uploaded successfully!`);
     return plantId; // Return plantId for further use if needed
 }
+async function displayUserPlants() {
+    const user = auth.currentUser;
+    
+    if (!user) {
+        console.error("❌ No authenticated user found.");
+        alert("You must be logged in to view the gallery.");
+        return;
+    }
+
+    const articlesContainer = document.getElementById("articles-container");
+    if (!articlesContainer) {
+        console.error("❌ Error: articles-container not found!");
+        return;
+    }
+
+    // Clear previous entries before adding new ones
+    articlesContainer.innerHTML = "";
+
+    const q = query(collection(db, "plants"), where("uid", "==", user.uid));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+        console.log("No plants found for this user.");
+        articlesContainer.innerHTML = `<p>No plants found.</p>`;
+        return;
+    }
+
+    querySnapshot.forEach((doc) => {
+        const plantData = doc.data();
+        console.log("Fetched Plant:", plantData);
+
+        // Create the article element
+        const newArticle = document.createElement("article");
+
+        newArticle.innerHTML = `
+            <input class="articleInput" type="radio" name="articles" id="article${plantData.plantId}">
+            <label for="article${plantData.plantId}">
+                <h2 class="crop">${plantData.name}</h2>
+            </label>
+            <div class="accordion-content">
+                <img src="${plantData.imageUrl || 'default-image.jpg'}" 
+                     alt="${plantData.name} Image" class="accordion-image">
+                <p>Health Score: ${plantData.current_health}</p>
+                <p>AI Feedback: ${plantData.ai_feedback}</p>
+            </div>
+        `;
+
+        // Append the new article to the container
+        articlesContainer.appendChild(newArticle);
+    });
+}
+
 
 //Displaying the current plants we have
 // async function fetchAndDisplayUserPlants() {
