@@ -8,6 +8,8 @@ Steps to install and run your project:
 
 git clone https://github.com/bradwco/plant-pulse.git
 
+cd plant-pulse
+
 python -m venv venv
 
 .\venv\Scripts\activate 
