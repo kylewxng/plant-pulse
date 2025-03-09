@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Sign Up</title>
   <link href="../static/signup.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <main>
     <div class="black-box"></div>
-    <div class="light-green-box"></div>
-    <div class="signup-container">
-      <h2>Welcome</h2>
+    <p class="title-text">plantpulse.</p>
+    <div class="sign-up-container">
+      <h2>Welcome in</h2>
+      <h3>Please enter your account details</h3>
       <p>Email</p>
-      <input id = "signupEmail" type="email" placeholder="Email" class="input-box" required/>
-      <p>Confirm Email</p>
-      <input id = "confirmEmail" type="email" placeholder="Email" class="input-box" required/>
+      <input id = "signupEmail" type="email" placeholder="sigmaboi@gmail.com" class="input-box" required/>
       <p>Password</p>
-      <input id = "signupPass" type="password" placeholder="Password" class="input-box" required/>
-      <button id = "signupSubmit" type="submit">Login</button>
+      <input id = "signupPass" type="password" placeholder="skibiditoilet123" class="input-box" required/>
+      <button id = "signupSubmit" type="submit" class="sign-up-button">Sign Up</button>
+      <img id="googleSignIn"src="../static/images/google icon.png" class="google-sign-in-button"/>
+      <a class="existing-account-link" href="login.html" style="color: white">Log into existing account</a>
     </div>
+    <img class="green-rectangle" src="../static/images/green-rectangle.png">
     <script src="{{ url_for('static', filename='bundle.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </main>

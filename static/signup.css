@@ -1,32 +1,172 @@
 body {
-  background-color: #2D5957;
+  background-color: #2d5957;
   overflow: hidden;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .black-box {
   border: solid black;
-  border-radius: 16px;
-  width: 93%;
-  margin-right: auto;
-  margin-left: auto;
+  border-radius: 46px;
+  width: 96%;
+  margin: 50px auto;
   height: 120vh;
-  margin-top: 75px;
-  background: radial-gradient(circle at center 40%, #215941 0%, #000000 35%);
-}
-
-.signup-container {
+  background: radial-gradient(circle at center 40%, #215941 0%, #000000 30%);
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: left; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  width: 300px; /* Adjust as needed */
-  height: auto; /* Let it grow based on content */
-  padding: 20px; /* Add space inside */
-  border: 2px solid white;
-  border-radius: 10px;
-  position: absolute;
-  top: 35%;
-  left: 10%;
-  color: white; /* Ensure text is visible */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.green-rectangle {
+  position: absolute;
+  top: 10%;
+  left: 63%;
+  width: 500px;
+  height: 650px;
+}
+
+.title-text {
+  position: absolute;
+  top: 6%;
+  left: 4%;
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+  padding: 0;
+}
+
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to left */
+  justify-content: center;
+  width: 420px;
+  padding: 25px;
+  border: 2px white;
+  border-radius: 12px;
+  position: absolute;
+  top: 13%;
+  left: 9%;
+  color: white;
+}
+
+p {
+  font-size: 20px;
+}
+
+.input-box {
+  width: 97%;
+  height: 55px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 12px;
+  margin-bottom: 15px;
+}
+
+.sign-up-button {
+  background-color: #58b484;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 55px;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.forgot-password-link {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 18px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 36px;
+  margin: 0;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.google-sign-in-button {
+  height: 55px;
+  width: 55px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 22px;
+}
+
+.create-account-link {
+  align-self: center;
+  font-size: 18px;
+  text-decoration: underline;
+  text-align: center;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.create-account-link:visited {
+  color: white;
+  text-decoration: underline;
+}
+
+.existing-account-link {
+  align-self: center;
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .login-container {
+    width: 90%;
+    left: 5%;
+    top: 20%;
+    padding: 20px;
+  }
+
+  .title-text {
+    font-size: 28px;
+    left: 10%;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  .input-box,
+  .sign-in-button {
+    width: 100%;
+  }
+
+  .google-sign-in-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  p,
+  .forgot-password-link,
+  .create-account-link {
+    font-size: 16px;
+  }
+}
