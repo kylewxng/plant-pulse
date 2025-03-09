@@ -1,72 +1,35 @@
-document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-    const dropZoneElement = inputElement.closest(".drop-zone");
-  
-    dropZoneElement.addEventListener("click", (e) => {
-      inputElement.click();
+const dropArea = document.getElementById("drop-area");
+
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropArea.classList.add("active");
     });
-  
-    inputElement.addEventListener("change", (e) => {
-      if (inputElement.files.length) {
-        updateThumbnail(dropZoneElement, inputElement.files[0]);
-      }
+
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("active");
     });
-  
-    dropZoneElement.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      dropZoneElement.classList.add("drop-zone--over");
+
+    dropArea.addEventListener("drop", (event) => {
+        event.preventDefault();
+        dropArea.classList.remove("active");
+
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            alert(`File uploaded: ${files[0].name}`);
+            // You can now process the file (e.g., upload it via AJAX)
+        }
     });
-  
-    ["dragleave", "dragend"].forEach((type) => {
-      dropZoneElement.addEventListener(type, (e) => {
-        dropZoneElement.classList.remove("drop-zone--over");
-      });
+
+    dropArea.addEventListener("click", () => {
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.click();
+
+        fileInput.addEventListener("change", () => {
+            if (fileInput.files.length > 0) {
+                alert(`File selected: ${fileInput.files[0].name}`);
+                // You can now process the file (e.g., upload it via AJAX)
+            }
+        });
     });
-  
-    dropZoneElement.addEventListener("drop", (e) => {
-      e.preventDefault();
-  
-      if (e.dataTransfer.files.length) {
-        inputElement.files = e.dataTransfer.files;
-        updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-      }
-  
-      dropZoneElement.classList.remove("drop-zone--over");
-    });
-  });
-  
-  /**
-   * Updates the thumbnail on a drop zone element.
-   *
-   * @param {HTMLElement} dropZoneElement
-   * @param {File} file
-   */
-  function updateThumbnail(dropZoneElement, file) {
-    let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
-  
-    // First time - remove the prompt
-    if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-      dropZoneElement.querySelector(".drop-zone__prompt").remove();
-    }
-  
-    // First time - there is no thumbnail element, so lets create it
-    if (!thumbnailElement) {
-      thumbnailElement = document.createElement("div");
-      thumbnailElement.classList.add("drop-zone__thumb");
-      dropZoneElement.appendChild(thumbnailElement);
-    }
-  
-    thumbnailElement.dataset.label = file.name;
-  
-    // Show thumbnail for image files
-    if (file.type.startsWith("image/")) {
-      const reader = new FileReader();
-  
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-      };
-    } else {
-      thumbnailElement.style.backgroundImage = null;
-    }
-  }
-  
