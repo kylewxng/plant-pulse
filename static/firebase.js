@@ -273,41 +273,6 @@ async function uploadNewPlant(name, health, aiFeedback, imageFile) {
   return plantId; // Return plantId for further use if needed
 }
 async function displayUserPlants() {
-    const user = auth.currentUser;
-    
-    if (!user) {
-        console.error("❌ No authenticated user found.");
-        alert("You must be logged in to view the gallery.");
-        return;
-    }
-
-    const articlesContainer = document.getElementById("articles-container");
-    if (!articlesContainer) {
-        console.error("❌ Error: articles-container not found!");
-        return;
-    }
-
-    // Clear previous entries before adding new ones
-    articlesContainer.innerHTML = "";
-
-    const q = query(collection(db, "plants"), where("uid", "==", user.uid));
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
-        console.log("No plants found for this user.");
-        articlesContainer.innerHTML = `<p>No plants found.</p>`;
-        return;
-    }
-
-    querySnapshot.forEach((doc) => {
-        const plantData = doc.data();
-        console.log("Fetched Plant:", plantData);
-
-        // Create the article element
-        const newArticle = document.createElement("article");
-
-        newArticle.innerHTML = `
-            <input class="articleInput" type="checkbox" name="articles" id="article${plantData.plantId}">
   const user = auth.currentUser;
 
   if (!user) {
@@ -348,14 +313,21 @@ async function displayUserPlants() {
             <label for="article${plantData.plantId}">
                 <h2 class="crop">${plantData.name}</h2>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${(plantData.current_health * 10)}%;"></div>
+                    <div class="progress-bar" style="width: ${
+                      plantData.current_health * 10
+                    }%;"></div>
                 </div>
             </label>
             <div class="accordion-content">
-                <img src="${plantData.imageUrl || "default-image.jpg"}" 
-                     alt="${plantData.name} Image" class="accordion-image">
-                <p><span class="bold" style="color: #FF6961">Health Score:</span> ${plantData.current_health}</p>
-                <p><span class="bold" style="color: #77DD77">AI Feedback:</span> ${plantData.ai_feedback}</p>
+                <img src="${plantData.imageUrl || "default-image.jpg"}" alt="${
+      plantData.name
+    } Image" class="accordion-image">
+                <p><span class="bold" style="color: #FF6961">Health Score:</span> ${
+                  plantData.current_health
+                }</p>
+                <p><span class="bold" style="color: #77DD77">AI Feedback:</span> ${
+                  plantData.ai_feedback
+                }</p>
             </div>
         `;
 
