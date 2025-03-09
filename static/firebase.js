@@ -189,7 +189,7 @@ const db = getFirestore();
 const storage = getStorage(); //for images
 
 document.addEventListener("DOMContentLoaded", () => {
-    const addButton = document.getElementById("add");
+    const addButton = document.getElementById("submitFile");
     const fileInput = document.getElementById("fileInput");
     let plantName = "";
     let selectedFile = null;
