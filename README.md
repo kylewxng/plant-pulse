@@ -1,4 +1,4 @@
-# Plant Pulse
+# Plant Pulse 🌱
 
 ## Description
 Crop health/growth tracker
