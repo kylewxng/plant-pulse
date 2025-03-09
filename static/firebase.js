@@ -299,15 +299,18 @@ async function displayUserPlants() {
         const newArticle = document.createElement("article");
 
         newArticle.innerHTML = `
-            <input class="articleInput" type="radio" name="articles" id="article${plantData.plantId}">
+            <input class="articleInput" type="checkbox" name="articles" id="article${plantData.plantId}">
             <label for="article${plantData.plantId}">
                 <h2 class="crop">${plantData.name}</h2>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${(plantData.current_health * 10)}%;"></div>
+                </div>
             </label>
             <div class="accordion-content">
                 <img src="${plantData.imageUrl || 'default-image.jpg'}" 
                      alt="${plantData.name} Image" class="accordion-image">
-                <p>Health Score: ${plantData.current_health}</p>
-                <p>AI Feedback: ${plantData.ai_feedback}</p>
+                <p><span class="bold" style="color: #FF6961">Health Score:</span> ${plantData.current_health}</p>
+                <p><span class="bold" style="color: #77DD77">AI Feedback:</span> ${plantData.ai_feedback}</p>
             </div>
         `;
 
