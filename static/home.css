@@ -67,9 +67,10 @@ body::before {
 }
 .middle-container {
     position: absolute;
-    top: 40%;
-    left: 38%;
-    width: auto;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
     height: 250px;
     background-color: transparent;
     border: 1px solid #2D5957;
@@ -77,10 +78,10 @@ body::before {
     flex-direction: column; 
     align-items: center; 
     justify-content: flex-start; 
-    border-radius: 30px;
+    border-radius: 10px;
     font-size: 20px;
-    text-align: cent4er;
-    padding: 0px;   
+    text-align: center;
+    padding: 20px; 
 }
 
 .upload {
@@ -147,67 +148,40 @@ h3, h4 {
     cursor: pointer;
     margin-right: 5%;
 }
-.upload-btn {
-    padding: 10px 20px;
-    background-color: #2D5957;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
+#drop-area {
+    width: 50%;
+    margin: 20px auto;
+    padding: 40px;
+    border: 2px dashed #4CAF50;
+    background-color: white;
+    text-align: center;
     cursor: pointer;
-    display: inline-block;
+    transition: 0.3s;
 }
 
-.upload-btn:hover {
-    background-color: #346764;
+#drop-area.active {
+    background-color: #e8f5e9;
 }
-.drop-zone {
-    max-width: 600px;
-    height: 200px;
-    padding: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 20px;
+
+#drop-area p {
+    font-size: 18px;
+    color: #555;
+}
+
+#bottom {
+    margin-top: 20px;
+}
+
+#add {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     cursor: pointer;
-    color: #cccccc;
-    border: 3px solid #2D5957;
-    border-radius: 20px;
-  }
-  
-  .drop-zone--over {
-    border-style: solid;
-  }
-  
-  .drop-zone__input {
-    display: none;
-  }
-  
-  .drop-zone__thumb {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #cccccc;
-    background-size: cover;
-    position: relative;
-  }
-  
-  .drop-zone__thumb::after {
-    content: attr(data-label);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 5px 0;
-    color: #ffffff;
-    background: rgba(0, 0, 0, 0.75);
-    font-size: 14px;
-    text-align: center;
-  }
-  
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#add:hover {
+    background-color: #45a049;
+}
