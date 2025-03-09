@@ -69,6 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.replace("/home");
         });
     }
+
+    const analyticsNavBut = document.getElementById("analyticsLink");
+    if(analyticsNavBut){
+        analyticsNavBut.addEventListener("click", (event) => {
+            event.preventDefault();
+            window.location.replace("/analytics");
+        });
+    }
     const loginExisting = document.getElementById("loginLink");
     if(loginExisting){
         loginExisting.addEventListener("click", (event) => {
