@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # GEMINI CONFIG
 #temporarily hardcoded for testing purposes
-GEMINI_API_KEY = "";
+GEMINI_API_KEY = "AIzaSyCsftnES8ssy21-NC35bj0kHT5L9U31fCc"
 genai.configure(api_key=GEMINI_API_KEY)
 
 def analyze_image(image_bytes):
