@@ -22,69 +22,9 @@
         </div>
         <button id="log-out">Log out</button>
     </div>
-    <div class="accordion">
-
-        <article>
-          <input id="article1" type="radio" name="articles" checked>
-          <label for="article1">
-            <h2 class="crop">Tobacco</h2>
-          </label>
-          <div class="accordion-content">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Tabak_9290019.JPG/800px-Tabak_9290019.JPG" alt="Tobacco Image" class="accordion-image">
-            <p>
-                To finish growing your tobacco crop, ensure it receives consistent watering (about 1-1.5 inches per week) while avoiding overwatering to prevent disease.
-                Monitor for pests and diseases like aphids and blue mold, applying treatments as needed.  
-                As harvest approaches, watch for leaves turning lighter green or slightly yellow, which signals they are ready for curing.
-            </p> 
-          </div>
-        </article>
+    <div class="accordion" id="accordian-container">
       
-        <article>
-          <input id="article2" type="radio" name="articles">
-          <label for="article2">
-            <h2 class="crop">Wheat</h2>
-          </label>
-          <div class="accordion-content">
-            <img src="https://cdn.shopify.com/s/files/1/0562/3883/3827/files/Wheat-ripening-17-july-688.jpg?v=1654788796" alt="Wheat Image" class="accordion-image">
-            <p>
-                Ensure consistent irrigation to avoid drought stress, providing about 1 inch of water per week if rainfall is insufficient.
-As the wheat matures, reduce irrigation slightly to encourage the plant to begin drying out, which will help the grains reach the ideal ripeness for harvesting.
-Keep an eye out for any signs of pests or diseases, especially fungal infections like rust, and apply appropriate treatments promptly to protect the crop as it nears harvest.
-            </p> 
-          </div>
-        </article>
-      
-        <article>
-          <input id="article3" type="radio" name="articles">
-          <label for="article3">
-            <h2 class="crop">Corn</h2>
-          </label>
-          <div class="accordion-content">
-            <img src="https://i1.wp.com/journeywithjill.net/wp-content/uploads/2019/07/corn-silk.jpg?fit=1024%2C1024&ssl=1" alt="Tobacco Image" class="accordion-image">
-            <p>
-                To finish growing your tobacco crop, ensure it receives consistent watering (about 1-1.5 inches per week) while avoiding overwatering to prevent disease.
-                Monitor for pests and diseases like aphids and blue mold, applying treatments as needed.  
-                As harvest approaches, watch for leaves turning lighter green or slightly yellow, which signals they are ready for curing.
-            </p> 
-          </div>
-        </article>
-      
-        <article>
-          <input id="article4" type="radio" name="articles">
-          <label for="article4">
-            <h2 class="crop">Potatoes</h2>
-          </label>
-          <div class="accordion-content">
-            <img src="https://gardenary-data.s3.amazonaws.com/section-image/U2nfRQHKTY950jpwjPdwN3NVjhImEo9cqHRIRiaS.jpeg" alt="Tobacco Image" class="accordion-image">
-            <p>
-                To finish growing your tobacco crop, ensure it receives consistent watering (about 1-1.5 inches per week) while avoiding overwatering to prevent disease.
-                Monitor for pests and diseases like aphids and blue mold, applying treatments as needed.  
-                As harvest approaches, watch for leaves turning lighter green or slightly yellow, which signals they are ready for curing.
-            </p> 
-          </div>
-        </article>
-      
-      </div>
+    </div>
       
       <script src="{{ url_for('static', filename='bundle.js') }}"></script>
       <script src="{{ url_for('static', filename='script.js') }}"></script>

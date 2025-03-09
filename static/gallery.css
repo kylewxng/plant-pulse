@@ -158,6 +158,7 @@ h3, h4 {
 }
 
 /* Reset styles only within the accordion */
+/* Reset styles only within the accordion */
 .accordion *,
 .accordion *::before,
 .accordion *::after {
@@ -197,6 +198,7 @@ article {
     gap: 15px;
 }
 
+/* Hide radio buttons visually but keep them functional */
 input[type="radio"] {
     appearance: none;
     position: fixed;
@@ -204,23 +206,28 @@ input[type="radio"] {
     left: -100vh;
 }
 
-input[type="radio"] ~ div {
+/* Hide all accordion contents by default */
+.accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s;
+    transition: max-height 0.5s ease-out, padding 0.3s ease-out; /* Add transition for padding */
+    padding: 0;
 }
 
-input[type="radio"]:checked ~ div {
-    max-height: 300px;
+/* When a radio button is checked, show the corresponding content */
+input[type="radio"]:checked ~ div.accordion-content {
+    max-height: 500px; /* Adjust this to the desired content height */
+    padding: 20px; /* Padding to add space inside the expanded content */
 }
 
-/* Title Styling */
+/* Title Styling (crop class) */
 label h2 {
     color: white;
     font-size: 24px;
     font-family: 'Montserrat', sans-serif;
     text-align: left;
     display: flex;
+    cursor: pointer;
 }
 
 /* Flex Container for Image and Text */
@@ -249,22 +256,7 @@ p {
     margin: 0;
 }
 
-.accordion-content {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    max-height: 15px; /* Start hidden */
-    overflow: hidden; /* Prevent content from spilling over */
-    transition: max-height 0.5s ease-out; /* Smooth transition */
-    padding: 20px; /* Padding inside content */
-}
-
-/* When the radio button is checked, show the content */
-input[type="radio"]:checked ~ div.accordion-content {
-    max-height: 500px; /* Adjust this to the desired content height */
-    padding: 20px; /* Keep the padding to maintain spacing */
-}
-
+/* Crop class for title margin */
 .crop {
     margin: 20px 0 0 20px;
 }
